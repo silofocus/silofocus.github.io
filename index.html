@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Silo QR</title>
+
+        <!-- Google fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet">
+    </head>
+
+    <style>
+html {
+    background: rgb(37,37,37);
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+.container-main, .container-logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+        padding: 3rem;
+}
+
+#title {
+    font-family: Quicksand;
+    font-size: 4rem;
+   font-size: 60px;
+    background: -webkit-linear-gradient(107deg, #5aadfd, #97e4bc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+        font-weight: 500
+}
+
+.tagline {
+    font-family: Quicksand;
+    font-size: 2.5rem;
+    padding-bottom: 4rem;
+    background: -webkit-linear-gradient(107deg, #5aadfd, #97e4bc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0.75;
+}
+
+#t1, #t2 {
+    display: none
+}
+
+#logo {
+    width: 14rem;
+    height: 14rem;
+}
+
+#qr {
+    width: 16rem;
+    height: 16rem;
+}
+    </style>
+
+    <body>
+        <div class="container-main">
+            <div class="container-logo">
+                <img id="logo" src="silo-logo-pngbg.png">
+                <div id="title">silo</div>
+            </div>
+            <div class="container-tagline">
+                <div id="t1" class="tagline">Goodbye screen addiction.</div>
+                <div id="t2" class="tagline">Your digital health spa.</div>
+                <div id="t3" class="tagline">Stay present.</div>
+            </div>
+            <img id="qr" src="qr-code-styling.png">
+        </div>
+    </body>
+</html>
