@@ -6,9 +6,11 @@ import {TrackballControls} from 'three/examples/jsm/controls/TrackballControls.j
 let scene = new THREE.Scene();
 
 // 2. Create the camera
+let WIDTH = 300
+let HEIGHT = 300
 let camera = new THREE.PerspectiveCamera(
     75, // fov = field of view
-    window.innerWidth/window.innerHeight, // aspect ratio
+    WIDTH / HEIGHT, // aspect ratio
     0.1, // near plane
     1000 // far plane
 );
@@ -18,10 +20,10 @@ let renderer = new THREE.WebGLRenderer({antialias:true});
 
 // Set the size and color of the renderer
 // renderer.setSize(window.innerWidth, window.innerHeight);
-let canvasWidth = 250;
-let canvasHeight = 400;
+let canvasWidth = WIDTH;
+let canvasHeight = HEIGHT;
 renderer.setSize(canvasWidth, canvasHeight);
-renderer.setClearColor(0x252525, 1);
+renderer.setClearColor(0x252585, 1);
 
 // Add the renderer's canvas to the top of the body
 // document.body.insertBefore(renderer.domElement, containerMain);
@@ -109,7 +111,7 @@ ladder.add(base);
 scene.add(ladder);
 
 // Move the camera back so we can view the ladder
-camera.position.z = 4;
+camera.position.z = 3;
 
 // Create the animation loop
 function animate() {
