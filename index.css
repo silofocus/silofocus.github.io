@@ -67,6 +67,7 @@ body, .container-logo, .text {
 }
 
 .title {
+    padding-top: 2rem;
     font-size: 3.75rem;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

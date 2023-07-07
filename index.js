@@ -1,12 +1,3 @@
-/* Tagline randomization */
-const taglines = [
-    "Your digital health spa.",
-    "Stay present.",
-    "Goodbye screen addiction."
-];
-
-let tagline = taglines[Math.floor(Math.random() * taglines.length)];
-document.getElementById("tagline").innerText = tagline
 
 
 

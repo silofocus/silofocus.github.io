@@ -2,12 +2,25 @@ import * as THREE from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
 import {TrackballControls} from 'three/examples/jsm/controls/TrackballControls.js';
 
+/* Tagline randomization */
+const taglines = [
+    "Your digital health spa.",
+    "Stay present.",
+    "Goodbye screen addiction."
+];
+
+let tagline = taglines[Math.floor(Math.random() * taglines.length)];
+document.getElementById("tagline").innerText = tagline
+
+
+/* Silo graphic */
+
 // Create the scene
 let scene = new THREE.Scene();
 
 // 2. Create the camera
-let WIDTH = 300
-let HEIGHT = 300
+let WIDTH = 200
+let HEIGHT = 200
 let camera = new THREE.PerspectiveCamera(
     75, // fov = field of view
     WIDTH / HEIGHT, // aspect ratio
@@ -23,7 +36,7 @@ let renderer = new THREE.WebGLRenderer({antialias:true});
 let canvasWidth = WIDTH;
 let canvasHeight = HEIGHT;
 renderer.setSize(canvasWidth, canvasHeight);
-renderer.setClearColor(0x252585, 1);
+renderer.setClearColor(0x252525, 1);
 
 // Add the renderer's canvas to the top of the body
 // document.body.insertBefore(renderer.domElement, containerMain);
