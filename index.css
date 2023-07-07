@@ -1,0 +1,81 @@
+/* Main */
+html {
+    background: rgb(37,37,37);
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+.container-main {
+    display: flex;
+    flex-direction: column;
+    height: 55%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+body, .container-logo, .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* width: 100%; */
+}
+
+/* Media */
+.logo-svg {
+    max-width: 8rem;
+    height: 20vh;
+}
+
+/* Text */
+.text {
+    font-family: Quicksand;
+    background: linear-gradient(107deg, #5aadfd, #97e4bc);
+    /* background-clip: text; */
+    /* color: transparent; */
+    font-weight: 500;
+    user-select: none;
+    text-shadow: -2px 3px 4px rgb(43 71 64 / 30%);
+
+    background: linear-gradient(90deg, #5aadfd, #75c4a3, #7bc8f6, #89dbb2, #97e4bc, #5aadfd);
+    background-size: 600% 600%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient 15s ease-in-out infinite;
+}
+
+@keyframes gradient {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+.title {
+    font-size: 3.75rem;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.tagline {
+    font-size: 1.75rem;
+    opacity: 0.9;
+    padding-top: 1rem;
+}
+
+.releasedate {
+    font-size: 3.75rem;
+    font-weight: 400;
+}
+
+@keyframes gradient-shift {
+    0% { background-position: 100% 0; }
+    100% { background-position: 0 0; }
+}
+
+.releasedate {
+    /* other styles... */
+    animation: gradient-shift 5s linear infinite;
+}

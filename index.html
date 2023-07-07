@@ -2,80 +2,50 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Silo QR</title>
+        <title>Silo</title>
 
         <!-- Google fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&family=Varela+Round&display=swap" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+        <script src="index.js" defer></script>
+        <link rel="stylesheet" href="index.css">
     </head>
-
-    <style>
-html {
-    background: rgb(37,37,37);
-}
-
-html, body {
-    height: 100%;
-    width: 100%;
-}
-
-.container-main, .container-logo {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-        padding: 3rem;
-}
-
-#title {
-    font-family: Quicksand;
-    font-size: 4rem;
-   font-size: 60px;
-    background: -webkit-linear-gradient(107deg, #5aadfd, #97e4bc);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-        font-weight: 500
-}
-
-.tagline {
-    font-family: Quicksand;
-    font-size: 2.5rem;
-    padding-bottom: 4rem;
-    background: -webkit-linear-gradient(107deg, #5aadfd, #97e4bc);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    opacity: 0.75;
-}
-
-#t1, #t2 {
-    display: none
-}
-
-#logo {
-    width: 14rem;
-    height: 14rem;
-}
-
-#qr {
-    width: 16rem;
-    height: 16rem;
-}
-    </style>
-
     <body>
         <div class="container-main">
             <div class="container-logo">
-                <img id="logo" src="silo-logo-pngbg.png">
-                <div id="title">silo</div>
+                    <svg class="logo-svg" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+    <defs>
+        <mask id="logo-mask">
+            <path class="logo-line" d="..." style="stroke: #000; stroke-linecap: round; fill: none; stroke-width: 26px;"/>
+        </mask>
+        <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="0%" spreadMethod="repeat">
+            <stop offset="0%" style="stop-color:#5aadfd;stop-opacity:1" />
+            <stop offset="20%" style="stop-color:#75c4a3;stop-opacity:1" />
+            <stop offset="40%" style="stop-color:#7bc8f6;stop-opacity:1" />
+            <stop offset="60%" style="stop-color:#89dbb2;stop-opacity:1" />
+            <stop offset="80%" style="stop-color:#97e4bc;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#5aadfd;stop-opacity:1" />
+        </linearGradient>
+    </defs>
+                        <path class="logo-line" d="M 205.126 382.486 L 275.412 382.447 M
+                        131.491 174.338 L 397.51 174.146 M 130.737 174 C 130.737 174 130.759
+                        37.705 264.2 37.681 C 397.511 37.657 397.51 174.347 397.51 174.347 M
+                        397.51 174.347 L 397.961 483.947 M 276.375 474.847 C 276.375 467.147
+                        276.434 235.267 276.434 235.267 M 201.681 303.94 L 272.112 303.947 M
+                        197.268 474.847 C 197.268 467.147 197.327 235.267 197.327 235.267 M
+                        99.562 483.947 L 424.596 483.947 M 128.79 480.322 L 130.737 173.347"
+                                                style="stroke: url(#logo-gradient);; stroke-linecap: round; fill:
+                                                rgba(256, 256, 256, 0); stroke-width: 26px;"/>
+                    </svg>
+                <div class="text title animated-text">silo</div>
+                <div id="tagline" class="text tagline">Goodbye screen addiction.</div>
             </div>
             <div class="container-tagline">
-                <div id="t1" class="tagline">Goodbye screen addiction.</div>
-                <div id="t2" class="tagline">Your digital health spa.</div>
-                <div id="t3" class="tagline">Stay present.</div>
+                <span class="text releasedate">Q3 2023</div>
             </div>
-            <img id="qr" src="qr-code-styling.png">
         </div>
+        <img id="qr" src="qr-code-styling.png" style="display:none">
     </body>
 </html>
