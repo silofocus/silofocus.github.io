@@ -53,16 +53,21 @@ body, .container-logo, .text {
   100% {background-position: 0% 50%;}
 }
 
+.logo {
+    width: 10vh;
+}
+
 .title {
+    padding-top: 2rem;
     font-size: 3.75rem;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .tagline {
+    padding-top: 0.5rem;
     font-size: 1.75rem;
     opacity: 0.9;
-    padding-top: 1rem;
 }
 
 .releasedate {
@@ -70,12 +75,8 @@ body, .container-logo, .text {
     font-weight: 400;
 }
 
-@keyframes gradient-shift {
-    0% { background-position: 100% 0; }
-    100% { background-position: 0 0; }
-}
 
-.releasedate {
-    /* other styles... */
-    animation: gradient-shift 5s linear infinite;
+/* Mobile */
+@media (max-width: 768px) {
+    /* ... */
 }
