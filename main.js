@@ -68,7 +68,7 @@ let lightCoordsCollection = [
 
 for (const lightCoords of lightCoordsCollection) {
     // Light
-    let light = new THREE.DirectionalLight(0xffffff, 0.4);
+    let light = new THREE.DirectionalLight(0xffffff, 0.48);
     light.position.set(...lightCoords); // position the light above
     light.castShadow = true; // enable shadows from this light
     light.shadow.radius = 15;
@@ -150,8 +150,40 @@ for(let i = 0; i <= 1; i++){
     ladder.add(sphere)
 }
 
+// Create a canvas
+let canvas = document.createElement('canvas');
+canvas.width = 256;
+canvas.height = 256;
+
+// Get the context of the canvas
+let context = canvas.getContext('2d');
+
+// Create the gradient
+let gradient = context.createRadialGradient(
+    canvas.width / 2,
+    canvas.height / 2,
+    0,
+    canvas.width / 2,
+    canvas.height / 2,
+    canvas.width / 2
+);
+
+// Add color stops to the gradient
+gradient.addColorStop(0, '#37945c');
+gradient.addColorStop(1, '#1a6317');
+
+// Apply the gradient to the context
+context.fillStyle = gradient;
+context.fillRect(0, 0, canvas.width, canvas.height);
+
+// Create a texture from the canvas
+let texture = new THREE.Texture(canvas);
+texture.needsUpdate = true;
+
+// Create the material using the texture
+let diskMaterial = new THREE.MeshPhongMaterial({ map: texture });
 // Create disk
-let diskMaterial = new THREE.MeshStandardMaterial({color: 0x79cf74});
+// let diskMaterial = new THREE.MeshStandardMaterial({color: 0x79cf74});
 let diskGeometry = new THREE.CylinderGeometry(1, 1, 0.1, 32);
 let disk = new THREE.Mesh(diskGeometry, diskMaterial);
 disk.position.set(0, -1.4, 0);
