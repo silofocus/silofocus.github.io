@@ -77,17 +77,21 @@ for(let i = 0; i <= 1; i++){
 }
 
 // Create the cylinders for the ladder edges
+let ladderEdgeGeometry = new THREE.CylinderGeometry(0.08, 0.08, 1.6, 32);
+let ladderEdgeCapGeometry = new THREE.SphereGeometry( 0.08, 32, 16 );
 for(let i = 0; i <= 1; i++){
-    let geometry = new THREE.CylinderGeometry(0.08, 0.08, 1.6, 32);
-    let cylinder = new THREE.Mesh(geometry, ladderMaterial);
+    let cylinder = new THREE.Mesh(ladderEdgeGeometry, ladderMaterial);
     cylinder.position.set(0.25 * (i == 0 ? 1 : -1) - 0.08, -0.2, 0); // Adjust the position for each cylinder
     ladder.add(cylinder);
+    let sphere = new THREE.Mesh(ladderEdgeCapGeometry, ladderMaterial);
+    sphere.position.set(0.25 * (i == 0 ? 1 : -1) - 0.08, 0.6, 0);
+    ladder.add(sphere)
 }
 
 // Create the ladder rungs
+let rungGeometry = new THREE.CylinderGeometry(0.08, 0.08, 0.4, 32);
 for(let i = 0; i <= 1; i++){
-    let geometry = new THREE.CylinderGeometry(0.08, 0.08, 0.4, 32);
-    let rung = new THREE.Mesh(geometry, ladderMaterial);
+    let rung = new THREE.Mesh(rungGeometry, ladderMaterial);
     rung.rotation.z = Math.PI / 2;
     rung.position.set(-0.1, -0.4 + i * 0.6, 0); // Adjust the position for each cylinder
     ladder.add(rung);
@@ -111,11 +115,24 @@ crossbar.rotation.z = Math.PI / 2;
 crossbar.position.set(0, 1, 0); // Adjust the position for each cylinder
 ladder.add(crossbar);
 
-// Create the ladder base
-let baseGeometry = new THREE.CylinderGeometry(1, 1, 0.1, 32);
-let base = new THREE.Mesh(baseGeometry, baseMaterial);
-base.position.set(0, -1.2, 0); // Adjust the position for each cylinder
+// Create the base
+let baseGeometry = new THREE.CylinderGeometry(0.08, 0.08, 1.65, 32);
+let base = new THREE.Mesh(baseGeometry, ladderMaterial);
+base.rotation.z = Math.PI / 2;
+base.position.set(0, -1, 0); // Adjust the position for each cylinder
 ladder.add(base);
+let baseCapGeometry = new THREE.SphereGeometry( 0.08, 32, 16 );
+for(let i = 0; i <= 1; i++){
+    let sphere = new THREE.Mesh(baseCapGeometry, ladderMaterial);
+    sphere.position.set((i ? 1 : -1) * 0.825, -1, 0);
+    ladder.add(sphere)
+}
+
+// Create the disk
+let diskGeometry = new THREE.CylinderGeometry(1, 1, 0.1, 32);
+let disk = new THREE.Mesh(diskGeometry, baseMaterial);
+disk.position.set(0, -1.2, 0); // Adjust the position for each cylinder
+ladder.add(disk);
 
 // #5aadfd, #97e4bc
 
@@ -129,13 +146,14 @@ camera.position.z = 3;
 // Create the animation loop
 function animate() {
     requestAnimationFrame(animate);
-    
+
     // Update controls
     controls.update();
     trackballControls.update();
 
     // spin
     ladder.rotation.y -= 0.01; // rotate the ladder
+
     // Render the scene
     renderer.render(scene, camera);
 }
