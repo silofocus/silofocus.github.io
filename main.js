@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
 import {TrackballControls} from 'three/examples/jsm/controls/TrackballControls.js';
 
+
 /* Tagline randomization */
 const taglines = [
     "Your digital health spa.",
@@ -15,12 +16,14 @@ document.getElementById("tagline").innerText = tagline
 
 /* Silo graphic */
 
+// Define canvas dimensions
+let WIDTH = 250
+let HEIGHT = 200
+
 // Create the scene
 let scene = new THREE.Scene();
 
-// 2. Create the camera
-let WIDTH = 200
-let HEIGHT = 200
+// Create the camera
 let camera = new THREE.PerspectiveCamera(
     75, // fov = field of view
     WIDTH / HEIGHT, // aspect ratio
@@ -32,16 +35,10 @@ let camera = new THREE.PerspectiveCamera(
 let renderer = new THREE.WebGLRenderer({antialias:true});
 
 // Set the size and color of the renderer
-// renderer.setSize(window.innerWidth, window.innerHeight);
-let canvasWidth = WIDTH;
-let canvasHeight = HEIGHT;
-renderer.setSize(canvasWidth, canvasHeight);
+renderer.setSize(WIDTH, HEIGHT);
 renderer.setClearColor(0x252525, 1);
 
 // Add the renderer's canvas to the top of the body
-// document.body.insertBefore(renderer.domElement, containerMain);
-// let containerMain = document.querySelector('.container-main');
-// containerMain.prepend(renderer.domElement);
 document.addEventListener('DOMContentLoaded', function() {
   let containerMain = document.querySelector('.container-logo');
   let canvas = renderer.domElement;
@@ -59,67 +56,92 @@ let trackballControls = new TrackballControls(camera, renderer.domElement);
 trackballControls.noZoom = true;
 trackballControls.noPan = true;
 trackballControls.staticMoving = false; // enable inertia
-trackballControls.dynamicDampingFactor = 0.1;
+trackballControls.dynamicDampingFactor = 10.1;
 
-// create ladder material
-let ladderMaterial = new THREE.MeshBasicMaterial({color: 0x80b3ff});
-let baseMaterial = new THREE.MeshBasicMaterial({color: 0x79cf74});
+let lightCoordsCollection = [
+    [-1,1,1],  // Front light 1
+    [0, 1, 1.5],  // Front light 2
+    [1, 1.5, -0.5], // Back light
+    [0, -2, 0],  // Bottom light
+    [1, 0, 1], // Botom light 2
+]
 
-// Create a group for the ladder
+for (const lightCoords of lightCoordsCollection) {
+    // Light
+    let light = new THREE.DirectionalLight(0xffffff, 0.4);
+    light.position.set(...lightCoords); // position the light above
+    light.castShadow = true; // enable shadows from this light
+    light.shadow.radius = 15;
+    scene.add(light);
+
+    // // (DEBUGGING) Light view mesh
+    // let lightSphereMaterial = new THREE.MeshStandardMaterial({color: 0xb0b38f});
+    // let lightSphereGeometry = new THREE.SphereGeometry( 0.08, 32, 16 );
+    // let lightSphere = new THREE.Mesh(lightSphereGeometry, lightSphereMaterial);
+    // lightSphere.position.set(...lightCoords)
+    // scene.add(lightSphere)
+}
+
+
+// Create ladder group and material
 let ladder = new THREE.Group();
+let ladderMaterial = new THREE.MeshStandardMaterial({color: 0x80b3ff});
 
-// Create the cylinders for the frame
+// Create frame edges
 for(let i = 0; i <= 1; i++){
-    let geometry = new THREE.CylinderGeometry(0.1, 0.1, 2, 32);
-    let frame = new THREE.Mesh(geometry, ladderMaterial);
-    frame.position.set(0.6 * (i == 0 ? 1 : -1), 0, 0); // Adjust the position for each cylinder
-    ladder.add(frame);
+    let frameEdgeGeometry = new THREE.CylinderGeometry(0.1, 0.1, 2, 32);
+    let frameEdge = new THREE.Mesh(frameEdgeGeometry, ladderMaterial);
+    frameEdge.position.set(0.6 * (i == 0 ? 1 : -1), 0, 0);
+    ladder.add(frameEdge);
 }
 
-// Create the cylinders for the ladder edges
-let ladderEdgeGeometry = new THREE.CylinderGeometry(0.08, 0.08, 1.6, 32);
-let ladderEdgeCapGeometry = new THREE.SphereGeometry( 0.08, 32, 16 );
+// Create ladder edges
 for(let i = 0; i <= 1; i++){
-    let cylinder = new THREE.Mesh(ladderEdgeGeometry, ladderMaterial);
-    cylinder.position.set(0.25 * (i == 0 ? 1 : -1) - 0.08, -0.2, 0); // Adjust the position for each cylinder
-    ladder.add(cylinder);
-    let sphere = new THREE.Mesh(ladderEdgeCapGeometry, ladderMaterial);
-    sphere.position.set(0.25 * (i == 0 ? 1 : -1) - 0.08, 0.6, 0);
-    ladder.add(sphere)
+    // Bar
+    let ladderEdgeGeometry = new THREE.CylinderGeometry(0.08, 0.08, 1.6, 32);
+    let ladderEdge = new THREE.Mesh(ladderEdgeGeometry, ladderMaterial);
+    ladderEdge.position.set(0.25 * (i == 0 ? 1 : -1) - 0.08, -0.2, 0);
+    ladder.add(ladderEdge);
+
+    // Rounded cap
+    let ladderEdgeCapGeometry = new THREE.SphereGeometry( 0.08, 32, 16 );
+    let ladderEdgeCap = new THREE.Mesh(ladderEdgeCapGeometry, ladderMaterial);
+    ladderEdgeCap.position.set(0.25 * (i == 0 ? 1 : -1) - 0.08, 0.6, 0);
+    ladder.add(ladderEdgeCap)
 }
 
-// Create the ladder rungs
+// Create ladder rungs
 let rungGeometry = new THREE.CylinderGeometry(0.08, 0.08, 0.4, 32);
 for(let i = 0; i <= 1; i++){
     let rung = new THREE.Mesh(rungGeometry, ladderMaterial);
     rung.rotation.z = Math.PI / 2;
-    rung.position.set(-0.1, -0.4 + i * 0.6, 0); // Adjust the position for each cylinder
+    rung.position.set(-0.1, -0.4 + i * 0.6, 0);
     ladder.add(rung);
 }
 
-// Create the cap
+// Create dome
 let path = new THREE.Curve();
 path.getPoint = function(t) {
-    let a = Math.PI * t; // angle
-    return new THREE.Vector3(Math.cos(a) * 0.6, Math.sin(a) * 0.6, 0).multiplyScalar(1);
+    let angle = Math.PI * t;
+    return new THREE.Vector3(Math.cos(angle) * 0.6, Math.sin(angle) * 0.6, 0).multiplyScalar(1);
 };
-let tubeGeometry = new THREE.TubeGeometry(path, 20, 0.1, 8, false);
-let semiCircle = new THREE.Mesh(tubeGeometry, ladderMaterial);
-semiCircle.position.set(0, 1, 0); // Adjust the position to match the top of the ladder
-ladder.add(semiCircle);
+let domeGeometry = new THREE.TubeGeometry(path, 20, 0.1, 8, false);
+let dome = new THREE.Mesh(domeGeometry, ladderMaterial);
+dome.position.set(0, 1, 0);
+ladder.add(dome);
 
-// Create the crossbar
+// Create crossbar
 let crossbarGeometry = new THREE.CylinderGeometry(0.08, 0.08, 1, 32);
 let crossbar = new THREE.Mesh(crossbarGeometry, ladderMaterial);
 crossbar.rotation.z = Math.PI / 2;
-crossbar.position.set(0, 1, 0); // Adjust the position for each cylinder
+crossbar.position.set(0, 1, 0);
 ladder.add(crossbar);
 
-// Create the base
+// Create base
 let baseGeometry = new THREE.CylinderGeometry(0.08, 0.08, 1.65, 32);
 let base = new THREE.Mesh(baseGeometry, ladderMaterial);
 base.rotation.z = Math.PI / 2;
-base.position.set(0, -1, 0); // Adjust the position for each cylinder
+base.position.set(0, -1, 0);
 ladder.add(base);
 let baseCapGeometry = new THREE.SphereGeometry( 0.08, 32, 16 );
 for(let i = 0; i <= 1; i++){
@@ -128,14 +150,26 @@ for(let i = 0; i <= 1; i++){
     ladder.add(sphere)
 }
 
-// Create the disk
+// Create disk
+let diskMaterial = new THREE.MeshStandardMaterial({color: 0x79cf74});
 let diskGeometry = new THREE.CylinderGeometry(1, 1, 0.1, 32);
-let disk = new THREE.Mesh(diskGeometry, baseMaterial);
-disk.position.set(0, -1.2, 0); // Adjust the position for each cylinder
+let disk = new THREE.Mesh(diskGeometry, diskMaterial);
+disk.position.set(0, -1.4, 0);
 ladder.add(disk);
 
 // #5aadfd, #97e4bc
 
+// Add shadows
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap; // soft shadow
+renderer.shadowMap.autoUpdate = true;
+renderer.shadowMap.needsUpdate = true;
+ladder.traverse((child) => {
+  if (child.isMesh) {
+    child.castShadow = true;
+    child.receiveShadow = true;
+  }
+});
 
 // Add the ladder to the scene
 scene.add(ladder);
@@ -151,8 +185,8 @@ function animate() {
     controls.update();
     trackballControls.update();
 
-    // spin
-    ladder.rotation.y -= 0.01; // rotate the ladder
+    // Perpetually rotate the ladder
+    ladder.rotation.y -= 0.01;
 
     // Render the scene
     renderer.render(scene, camera);
