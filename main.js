@@ -7,7 +7,10 @@ import {TrackballControls} from 'three/examples/jsm/controls/TrackballControls.j
 const taglines = [
     "Your digital health spa.",
     "Stay present.",
-    "Goodbye screen addiction."
+    "Goodbye screen addiction.",
+    "The ultimate screentime tool.",
+    "Your screen, your rules."
+    "Unwire the digital dopamine loop."
 ];
 
 let tagline = taglines[Math.floor(Math.random() * taglines.length)];
