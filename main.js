@@ -3,18 +3,32 @@ import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
 import {TrackballControls} from 'three/examples/jsm/controls/TrackballControls.js';
 
 
-/* Tagline randomization */
+/* Tagline rotation */
 const taglines = [
     "Your digital health spa.",
     "Stay present.",
     "Goodbye screen addiction.",
     "The ultimate screentime tool.",
-    "Your screen, your rules."
-    "Unwire the digital dopamine loop."
+    "Less screen, more time.",
+    "Your digital dopamine cleanse.",
+    "Rewire your brain."
 ];
 
-let tagline = taglines[Math.floor(Math.random() * taglines.length)];
-document.getElementById("tagline").innerText = tagline
+let taglineIndex = Math.floor(Math.random() * taglines.length);
+let visibleTagline = 0;
+const taglineElements = [document.getElementById('tagline1'), document.getElementById('tagline2')];
+taglineElements[0].textContent = taglines[taglineIndex];
+taglineElements[0].classList.add('show');
+setInterval(changeTagline, 6500);
+
+function changeTagline() {
+    taglineIndex = (taglineIndex + 1) % taglines.length;
+    let hiddenTagline = visibleTagline ^ 1;
+    taglineElements[visibleTagline].classList.remove('show');
+    taglineElements[hiddenTagline].textContent = taglines[taglineIndex];
+    taglineElements[hiddenTagline].classList.add('show');
+    visibleTagline = hiddenTagline
+}
 
 
 /* Silo graphic */

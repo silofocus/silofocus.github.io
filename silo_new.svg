@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <bx:grid x="0" y="0" width="31.175" height="30.96"/>
+  </defs>
+  <line style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 15px; stroke-linecap: round;" x1="122.753" y1="473.601" x2="124.7" y2="166.626"/>
+  <path style="stroke: rgb(0, 0, 0); fill: rgb(255, 255, 255); stroke-width: 15px; stroke-linecap: round;" d="M 124.7 167.279 C 124.7 167.279 124.722 30.984 258.163 30.96 C 391.474 30.936 391.473 167.626 391.473 167.626"/>
+  <line style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 15px; stroke-linecap: round;" x1="391.473" y1="167.626" x2="391.924" y2="477.226"/>
+  <path style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 15px; stroke-linecap: round;" d="M 196.282 474.916 C 196.296 464.262 196.797 143.443 196.797 143.443"/>
+  <path style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 15px; stroke-linecap: round;" d="M 263.539 475.001 C 263.548 464.512 263.899 148.669 263.899 148.669"/>
+  <line style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-width: 15px;" x1="199.631" y1="315.844" x2="262.564" y2="315.851"/>
+  <line style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-width: 15px;" x1="202.358" y1="425.83" x2="258.969" y2="425.791"/>
+  <line style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-width: 15px;" x1="202.425" y1="197.284" x2="259.152" y2="197.291"/>
+  <line style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-width: 15px;" x1="200.575" y1="371.807" x2="257.186" y2="371.768"/>
+  <line style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-width: 15px;" x1="203.625" y1="257.621" x2="260.352" y2="257.628"/>
+</svg>

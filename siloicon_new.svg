@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <bx:grid x="0" y="0" width="31.175" height="30.96"/>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="391.699" y1="167.626" x2="391.699" y2="477.226" id="gradient-0" gradientTransform="matrix(0.743281, 0, 0, 0.684465, 60.178776, 84.587313)">
+      <stop offset="0" style="stop-color: rgba(0, 0, 0, 1)"/>
+      <stop offset="1" style="stop-color: rgba(0, 0, 0, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="123.726" y1="166.626" x2="123.726" y2="473.601" id="gradient-1" gradientTransform="matrix(0.743281, 0, 0, 0.684465, 60.178776, 84.587313)">
+      <stop offset="0" style="stop-color: rgba(0, 0, 0, 1)"/>
+      <stop offset="1" style="stop-color: rgba(0, 0, 0, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="258.087" y1="30.96" x2="258.087" y2="167.626" id="gradient-2" gradientTransform="matrix(0.743281, 0, 0, 0.684465, 60.178776, 84.587313)">
+      <stop offset="0" style="stop-color: rgba(0, 0, 0, 1)"/>
+      <stop offset="1" style="stop-color: rgba(0, 0, 0, 1)"/>
+    </linearGradient>
+    <linearGradient id="color-0" gradientUnits="userSpaceOnUse" bx:pinned="true">
+      <stop style="stop-color: rgb(253, 100, 100);"/>
+    </linearGradient>
+    <linearGradient id="gradient-3" bx:pinned="true">
+      <stop offset="0" style="stop-color: rgb(142, 255, 172);"/>
+      <stop offset="0.985" style="stop-color: rgb(166, 201, 255);"/>
+    </linearGradient>
+  </defs>
+  <line style="fill: rgb(216, 216, 216); stroke-linecap: round; stroke: url(#gradient-1); stroke-width: 30px;" x1="151.418" y1="408.752" x2="152.865" y2="198.637"/>
+  <path style="stroke-linecap: round; paint-order: fill; fill: rgba(255, 255, 255, 0); stroke: url(#gradient-2); stroke-width: 30px;" d="M 152.865 199.085 C 152.865 199.085 152.882 105.796 252.066 105.779 C 351.153 105.762 351.152 199.322 351.152 199.322"/>
+  <line style="fill: rgb(216, 216, 216); stroke-linecap: round; stroke: url(#gradient-0); stroke-width: 30px;" x1="351.152" y1="199.322" x2="351.488" y2="411.232"/>
+  <path style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-width: 22px;" d="M 210.791 406.918 C 210.802 400.043 211.192 193.032 211.192 193.032"/>
+  <path style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-width: 22px;" d="M 263.275 406.305 C 263.282 399.563 263.557 196.546 263.557 196.546"/>
+  <line style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-width: 22px;" x1="215.256" y1="376.805" x2="259.434" y2="376.779"/>
+  <line style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-width: 22px;" x1="215.3" y1="271.536" x2="259.567" y2="271.541"/>
+  <line style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-width: 26px;" x1="214.326" y1="324.875" x2="258.502" y2="324.849"/>
+  <line style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-width: 22px;" x1="214.877" y1="223.138" x2="259.144" y2="223.143"/>
+</svg>
