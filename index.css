@@ -17,6 +17,7 @@ html, body {
     align-items: center;
     padding-top: 4rem;
     padding-bottom: 4rem;
+    user-select: none;
 }
 
 .text {
@@ -64,6 +65,11 @@ body, .container-logo, .text {
 }
 
 .img-container, .social-link {
+    user-select: none;
+}
+
+.social-link {
+    color: transparent;
     transition: filter 300ms;
     user-select: none;
 }
